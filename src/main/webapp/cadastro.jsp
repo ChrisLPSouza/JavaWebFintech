@@ -37,7 +37,7 @@
 </c:if>
     <div class="d-grid gap-4 col-3 mx-auto m-5">
         <h1 class="title">Complete seu cadastro <br>para acessar os serviços</h1>
-        <form action="/CadastroServlet" method="post">
+        <form action="cadastro-servlet" method="post">
             <div class="d-grid gap-4 mb-3">
                 <input type="text" name="nome" class="form-control" id="exampleFormControlInput1" placeholder="Nome">
             </div>

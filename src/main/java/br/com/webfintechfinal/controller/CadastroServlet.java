@@ -34,14 +34,14 @@ public class CadastroServlet extends HttpServlet {
         usuario.setSenha(senha);
         usuario.setTelefone("963256422");
         usuario.setPais("Brasil");
-        usuario.setUserName("");
+        usuario.setUserName(nome);
 
 
         UsuarioDAO dao = new UsuarioDAO();
 
         try {
-            boolean bool = dao.insert(usuario);
-            if (bool) {
+            int row = dao.insert(usuario);
+            if (row > 0) {
                 request.setAttribute("msg", nome + ", Registrado com sucesso!");
             } else {
                 request.setAttribute("err", "Erro ao cadastrar!");

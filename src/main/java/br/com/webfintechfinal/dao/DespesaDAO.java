@@ -16,7 +16,7 @@ public class DespesaDAO {
         connection = factory.conectar();
     }
 
-    public void insert(Despesa despesa)  {
+    public int insert(Despesa despesa)  {
         String sql = "insert into T_FIN_DESPESAS (cd_despesa, vl_despesa, nm_despesa, t_fin_usuario_nm_username)" +
                 "values (SQ_DESPESAS.nextval, ?, ?, ?)" ;
         PreparedStatement stmt = null;
@@ -27,11 +27,16 @@ public class DespesaDAO {
             stmt.setString(2, despesa.getNome());
             stmt.setString(3, despesa.getUserName());
 
-            stmt.execute();
-            stmt.close();
-            System.out.println("Inserido com sucesso!");
+            return stmt.executeUpdate();
         } catch (SQLException e) {
             System.err.println("Erro: " + e.getMessage());
+            return 0;
+        } finally {
+            try {
+                stmt.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
 
     }

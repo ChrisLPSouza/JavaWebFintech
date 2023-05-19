@@ -16,25 +16,28 @@ public class UsuarioDAO {
         connection = factory.conectar();
     }
 
-    public boolean insert(Usuario usuario) throws SQLException {
-        String sql = "insert into T_FIN_USUARIO (ds_senha, nm_usuario, ds_email, nr_telefone, nm_pais, nm_username)" +
+    public int insert(Usuario usuario) throws SQLException {
+        String sql = "insert into T_FIN_USUARIO (nm_usuario, ds_email, ds_senha, nr_telefone, nm_pais, nm_username)" +
                 "values (?, ?, ?, ?, ?, ?)" ;
 
         PreparedStatement stmt = null;
         try {
             stmt = connection.prepareStatement(sql);
 
-            stmt.setString(1, usuario.getSenha());
-            stmt.setString(2, usuario.getNome());
-            stmt.setString(3, usuario.getEmail());
+
+            stmt.setString(1, usuario.getNome());
+            stmt.setString(2, usuario.getEmail());
+            stmt.setString(3, usuario.getSenha());
             stmt.setString(4, usuario.getTelefone());
             stmt.setString(5, usuario.getPais());
             stmt.setString(6, usuario.getUserName());
 
-            return stmt.execute();
+            return stmt.executeUpdate();
          } catch (SQLException e) {
+            System.out.println("ERRO: "+ e.getMessage());
+            return 0;
+        } finally {
             stmt.close();
-            return false;
         }
 
     }
