@@ -1,0 +1,121 @@
+package br.com.webfintechfinal.dao;
+
+import br.com.webfintechfinal.connection.ConnectionFactory;
+import br.com.webfintechfinal.model.Despesa;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class DespesaDAO {
+
+    private Connection connection;
+
+    public DespesaDAO() {
+        ConnectionFactory factory = new ConnectionFactory();
+        connection = factory.conectar();
+    }
+
+    public void insert(Despesa despesa)  {
+        String sql = "insert into T_FIN_DESPESAS (cd_despesa, vl_despesa, nm_despesa, t_fin_usuario_nm_username)" +
+                "values (SQ_DESPESAS.nextval, ?, ?, ?)" ;
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement(sql);
+
+            stmt.setFloat(1, despesa.getValor());
+            stmt.setString(2, despesa.getNome());
+            stmt.setString(3, despesa.getUserName());
+
+            stmt.execute();
+            stmt.close();
+            System.out.println("Inserido com sucesso!");
+        } catch (SQLException e) {
+            System.err.println("Erro: " + e.getMessage());
+        }
+
+    }
+
+    public List<Despesa> getAll() {
+        List<Despesa> despesas = new ArrayList<Despesa>();
+        String sql = "select * from T_FIN_DESPESAS";
+        try {
+            Statement stmt = connection.createStatement();
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while(rs.next()) {
+                Despesa despesa = new Despesa();
+                despesa.setCodigo(rs.getInt("cd_despesa"));
+                despesa.setValor(rs.getFloat("vl_despesa"));
+                despesa.setNome(rs.getString("nm_despesa"));
+                
+                despesas.add(despesa);
+            }
+            rs.close();
+            stmt.close();
+            return despesas;
+
+        } catch (SQLException e) {
+            System.out.println("Erro: " + e.getMessage());
+            return null;
+        }
+    }
+    public Despesa selectById(int codigo) {
+        Despesa despesa = null;
+        String sql = "select * from T_FIN_DESPESAS where cd_despesa=?";
+
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, codigo);
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                despesa = new Despesa();
+                despesa.setCodigo(rs.getInt("cd_despesa"));
+                despesa.setValor(rs.getInt("vl_despesa"));
+                despesa.setNome(rs.getString("nm_despesa"));
+            }
+
+            rs.close();
+            stmt.close();
+            return despesa;
+        } catch (SQLException e) {
+            System.out.println("Erro: " + e.getMessage());
+            return null;
+        }
+    }
+    public void delete(int codigo)  {
+        String sql = "delete from T_FIN_DESPESAS where cd_despesa=?";
+        try{
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, codigo);
+            stmt.execute();
+            stmt.close();
+            System.out.println("Deletado com sucesso!");
+        }catch (SQLException e) {
+            System.err.println("Erro: " + e.getMessage());
+        }
+
+    }
+    public void update(Despesa despesa) {
+        String sql = "update T_FIN_DESPESAS set vl_despesa=?, nm_despesa=? where cd_despesa=?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+
+            stmt.setFloat(1, despesa.getValor());
+            stmt.setString(2, despesa.getNome());
+            stmt.setInt(3, despesa.getCodigo());
+
+            stmt.execute();
+            stmt.close();
+            System.out.println("Atualizado com sucesso!");
+        } catch (SQLException e) {
+            System.err.println("Erro: " + e.getMessage());
+        }
+
+
+    }
+ }
+
