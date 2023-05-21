@@ -12,11 +12,9 @@ import java.sql.SQLException;
 @WebServlet(name = "CadastroServlet", value = "/cadastro-servlet")
 public class CadastroServlet extends HttpServlet {
 
-    @Override
-    public void init() throws ServletException {
-        super.init();
-    }
+    public CadastroServlet() {
 
+    }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("cadastro.jsp").forward(request, response);

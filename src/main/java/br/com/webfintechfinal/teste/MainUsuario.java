@@ -10,12 +10,12 @@ public class MainUsuario {
     public static void main(String[] args) {
 
         Usuario usuario = new Usuario();
-        usuario.setNome("katia ivanova");
-        usuario.setEmail("katia@mail.com");
+        usuario.setNome("moreno ivanova");
+        usuario.setEmail("moreno@mail.com");
         usuario.setSenha("1234");
         usuario.setTelefone("963256422");
         usuario.setPais("Brasil");
-        usuario.setUserName("kativa");
+        usuario.setUserName("moreno");
 
         UsuarioDAO dao = new UsuarioDAO();
 
