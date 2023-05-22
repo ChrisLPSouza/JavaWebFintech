@@ -11,9 +11,9 @@ public class MainDespesas {
 
         testaInsertDespesa();
         testaGetAllDespesas();
-        testaDespesaById();
-        testaUpdateDespesa();
-        testaDeleteDespesa();
+//        testaDespesaById();
+//        testaUpdateDespesa();
+//        testaDeleteDespesa();
 
     }
 
@@ -21,8 +21,8 @@ public class MainDespesas {
 
         Despesa despesa = new Despesa();
         despesa.setValor(1200);
-        despesa.setNome("Carro");
-        despesa.setUserName("CARLOSEDU");
+        despesa.setNome("lulinha");
+        despesa.setUserName("lula@mail.com");
 
         DespesaDAO dao = new DespesaDAO();
         dao.insert(despesa);

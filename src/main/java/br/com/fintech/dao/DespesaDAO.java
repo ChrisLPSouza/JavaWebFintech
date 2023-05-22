@@ -16,7 +16,7 @@ public class DespesaDAO {
     }
 
     public int insert(Despesa despesa)  {
-        String sql = "insert into T_FIN_DESPESAS (cd_despesa, vl_despesa, nm_despesa, t_fin_usuario_nm_username)" +
+        String sql = "insert into T_FIN_DESPESAS (cd_despesa, vl_despesa, nm_despesa, t_fin_usuario_ds_email)" +
                 "values (SQ_DESPESAS.nextval, ?, ?, ?)" ;
         PreparedStatement stmt = null;
         try {
