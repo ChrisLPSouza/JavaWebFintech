@@ -1,4 +1,4 @@
-package br.com.fintech.controller;
+package br.com.fintech.controller.servlet;
 
 import br.com.fintech.dao.UsuarioDAO;
 import br.com.fintech.model.Usuario;

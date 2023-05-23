@@ -9,14 +9,17 @@ public class ConnectionFactory {
     private final String ORACLE = "jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL";
 
     public Connection conectar()  {
-
+        Connection connection = null;
         try {
-            DriverManager.registerDriver (new oracle.jdbc.OracleDriver());
-            return DriverManager.getConnection(ORACLE, "RM97465", "051082");
-       } catch (SQLException e) {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            connection = DriverManager.getConnection(ORACLE, "RM97465", "051082");
+        } catch (SQLException e) {
            System.out.println("ERRO CONECTAR: "+ e.getMessage());
-            throw new RuntimeException(e);
-       }
+        } catch (ClassNotFoundException e) {
+            System.out.println("ERRO CLASS NOT FOUND: "+ e.getMessage());
+        } finally {
+            return connection;
+        }
     }
 
 }

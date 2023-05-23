@@ -1,9 +1,8 @@
 package br.com.fintech.model;
 
-import java.io.Serializable;
 import java.util.Objects;
 
-public class Usuario implements Serializable{
+public class Usuario{
 
     private String senha;
     private String nome;
@@ -15,6 +14,7 @@ public class Usuario implements Serializable{
     public Usuario() {
 
     }
+
     public String getSenha() {
         return senha;
     }
