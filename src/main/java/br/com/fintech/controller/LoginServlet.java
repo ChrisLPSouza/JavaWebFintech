@@ -8,19 +8,20 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "LoginServlet", value = "/login-servlet")
+@WebServlet(name = "LoginServlet", value = "/login")
 public class LoginServlet extends HttpServlet {
 
     @Override
-    public void init() throws ServletException {
-        super.init();
+    public void init() {
+        System.out.print("LOGIN SERVLET INIT");
     }
 
     public LoginServlet() {
-
+        System.out.print("LOGIN SERVLET INSTANCIADO");
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.print("LOGIN SERVLET DO_GET");
        verificar(request, response);
     }
     private void verificar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,7 +30,7 @@ public class LoginServlet extends HttpServlet {
             request.getRequestDispatcher("login-jsp").forward(request, response);
 
         } else {
-            if (action.equals("autenticar")) {
+            if (action.equals("auth")) {
                 String email = request.getParameter("email");
                 String senha = request.getParameter("senha");
 
@@ -54,6 +55,7 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.print("LOGIN SERVLET DO_POST");
         verificar(request, response);
     }
 }

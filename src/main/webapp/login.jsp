@@ -31,7 +31,7 @@
     <div class="d-grid gap-4">
       <img src="resources/img/logo_fintech.png">
     </div>
-    <form action="login-servlet?action=autenticar" method="post">
+    <form action="login?action=auth" method="post">
       <div class="mb-3 row">
 
         <div class="d-grid gap-4">
