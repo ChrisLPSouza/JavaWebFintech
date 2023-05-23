@@ -22,7 +22,7 @@ public class MainDespesas {
         Despesa despesa = new Despesa();
         despesa.setValor(1200);
         despesa.setNome("lulinha");
-        despesa.setUserName("lula@mail.com");
+        despesa.setEmail("lula@mail.com");
 
         DespesaDAO dao = new DespesaDAO();
         dao.insert(despesa);

@@ -72,7 +72,7 @@ public class UsuarioDAO {
     }
     public Usuario selectById(String id) {
         Usuario usuario = null;
-        String sql = "select * from T_FIN_USUARIO where nm_username=?";
+        String sql = "select * from T_FIN_USUARIO where ds_email=?";
 
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
@@ -100,14 +100,14 @@ public class UsuarioDAO {
         }
     }
     public void delete(String id) throws SQLException {
-        String sql = "delete from T_FIN_USUARIO where nm_username=?";
+        String sql = "delete from T_FIN_USUARIO where ds_email=?";
         PreparedStatement stmt = connection.prepareStatement(sql);
         stmt.setString(1, id);
         stmt.execute();
         stmt.close();
     }
     public void update(Usuario usuario) throws SQLException {
-        String sql = "update T_FIN_USUARIO set ds_senha=?, nm_usuario=?, ds_email=?, nr_telefone=?, nm_pais=? where nm_username=?";
+        String sql = "update T_FIN_USUARIO set ds_senha=?, nm_usuario=?, ds_email=?, nr_telefone=?, nm_pais=? where ds_email=?";
         PreparedStatement stmt = connection.prepareStatement(sql);
 
         stmt.setString(1, usuario.getSenha());

@@ -24,7 +24,7 @@ public class CadastroServlet extends HttpServlet {
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("cadastro.jsp").forward(request, response);
+        request.getRequestDispatcher("cadastra-usuario.jsp").forward(request, response);
     }
 
     @Override
@@ -52,7 +52,7 @@ public class CadastroServlet extends HttpServlet {
             } else {
                 request.setAttribute("err", "Erro ao cadastrar!");
             }
-            request.getRequestDispatcher("cadastro.jsp").forward(request, response);
+            request.getRequestDispatcher("cadastra-usuario.jsp").forward(request, response);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

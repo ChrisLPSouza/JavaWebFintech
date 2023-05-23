@@ -1,44 +1,56 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
   <link rel="stylesheet" href="resouces/css/fintech_index.css">
-  <title>Fintech Economize</title>
-
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Fintech Login</title>
   <meta property="og:title" content="Economize com nossa solução">
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
-
 <body style="background-color:hsla(142, 56%, 72%, 0.944);">
+<c:if test="${not empty msg }">
+
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>${ nameAttr }</strong> ${ msg }
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+</c:if>
+
+<c:if test="${not empty err }">
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>${ err }</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+</c:if>
 
   <div class="d-grid gap-4 col-3 mx-auto m-5">
     <div class="d-grid gap-4">
       <img src="resources/img/logo_fintech.png">
     </div>
-    <form>
+    <form action="login-servlet?action=autenticar" method="post">
       <div class="mb-3 row">
 
         <div class="d-grid gap-4">
-          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="E-mail">
-        </div>
+          <input type="email" class="form-control" name="email" id="exampleFormControlInput1" placeholder="E-mail">
+          </div>
       </div>
       <div class="mb-3 row">
 
         <div class="d-grid gap-4">
-          <input type="password" class="form-control" id="inputPassword" placeholder="Senha">
+          <input type="password" class="form-control" name="senha" id="inputPassword" placeholder="Senha">
         </div>
       </div>
       <div class="d-flex justify-content-between mb-5">
-        <a href="cadastro-servlet"><label for="staticEmail">Cadastre-se</label></a>
-        <a href="#"><label for="staticEmail">Esqueci Senha</label></a>
+        <a href="cadastro-servlet"><label>Cadastre-se</label></a>
+        <a href="#"><label>Esqueci Senha</label></a>
       </div>
 
       <div class="d-grid gap-4">
-        <button type="button" class="btn btn-success btn-lg">Acessar</button>
+        <button type="submit" class="btn btn-success btn-lg">Acessar</button>
       </div>
 
     </form>
@@ -47,10 +59,12 @@
   <div class="d-flex justify-content-center ">
 <%--    <img class="img-social" src="resources/img/face.png">--%>
 <%--    <img class="img-social" src="resources/img/insta.png">--%>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
+
+  <script type="text/javascript" src="resources/js/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+          integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+          crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

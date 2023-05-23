@@ -24,7 +24,7 @@ public class DespesaDAO {
 
             stmt.setFloat(1, despesa.getValor());
             stmt.setString(2, despesa.getNome());
-            stmt.setString(3, despesa.getUserName());
+            stmt.setString(3, despesa.getEmail());
 
             return stmt.executeUpdate();
         } catch (SQLException e) {

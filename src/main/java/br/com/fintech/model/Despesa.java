@@ -7,7 +7,7 @@ public class Despesa implements Serializable{
     private float valor;
     private String nome;
 
-	private String userName;
+	private String email;
 
     public Despesa() {
 
@@ -44,12 +44,12 @@ public class Despesa implements Serializable{
 		this.nome = nome;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	@Override
@@ -58,7 +58,7 @@ public class Despesa implements Serializable{
 				"codigo=" + codigo +
 				", valor=" + valor +
 				", nome='" + nome + '\'' +
-				", userName='" + userName + '\'' +
+				", userName='" + email + '\'' +
 				'}';
 	}
 }
