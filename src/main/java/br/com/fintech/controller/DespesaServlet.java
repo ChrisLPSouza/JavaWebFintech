@@ -1,4 +1,4 @@
-package br.com.fintech.controller.servlet;
+package br.com.fintech.controller;
 
 import br.com.fintech.dao.DespesaDAO;
 import br.com.fintech.model.Despesa;

@@ -1,4 +1,4 @@
-package br.com.fintech.controller.servlet;
+package br.com.fintech.controller;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
