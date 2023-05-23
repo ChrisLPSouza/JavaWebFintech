@@ -13,17 +13,28 @@
 </head>
 
 <body>
-<header>
 
+<c:if test="${not empty msg }">
+
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>${ nameAttr }</strong> ${ msg }
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</c:if>
+
+<c:if test="${not empty msgErr }">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>${ msgErr }</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</c:if>
+<header>
     <main>
         <article>
-
         </article>
         <section>
-
         </section>
-
-    </main>æ
+    </main>
 </header>
 
 <div class="d-grid gap-4 col-3 mx-auto">

@@ -12,24 +12,17 @@ import java.io.IOException;
 public class LoginServlet extends HttpServlet {
     public static final long serialVersionUID = 1L;
 
-//    @Override
-//    public void init() {
-//        System.out.println("LOGIN SERVLET INIT");
-//    }
-
     public LoginServlet() {
         super();
-        System.out.println("LOGIN SERVLET INSTANCIADO");
     }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("LOGIN SERVLET DO_GET");
         verificar(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("LOGIN SERVLET DO_POST");
         verificar(request, response);
     }
 
@@ -51,7 +44,9 @@ public class LoginServlet extends HttpServlet {
                         HttpSession session = request.getSession();
                         if (session !=null) {
                             session.setAttribute("usuario", usuario);
+                            request.setAttribute("msg", "Usuario Autenticado!");
                             request.getRequestDispatcher("home.jsp").forward(request, response);
+                            return;
                         }
                     } else {
                         request.setAttribute("err", "E-mail ou Senha inválidos!" );
