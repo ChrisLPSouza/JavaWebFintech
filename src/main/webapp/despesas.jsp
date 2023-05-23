@@ -5,7 +5,7 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="stylesheet" href="css/fintech_cadastro.css">
+    <link rel="stylesheet" href="resources/css/fintech_cadastro.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Fintech Economize</title>
     <meta property="og:title" content="Economize com nossa solução">
