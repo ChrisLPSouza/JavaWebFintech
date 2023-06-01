@@ -1,6 +1,7 @@
 package br.com.fintech.controller;
 
 import br.com.fintech.dao.DespesaDAO;
+import br.com.fintech.filter.LoginFilter;
 import br.com.fintech.model.Despesa;
 
 import javax.servlet.*;
@@ -34,7 +35,7 @@ public class DespesaServlet extends HttpServlet {
        Despesa despesa = new Despesa();
        despesa.setNome(nome);
        despesa.setValor(vlr);
-       despesa.setEmail("katia@mail.com");
+       despesa.setEmail(LoginFilter.usuario.getEmail());
 
         DespesaDAO dao = new DespesaDAO();
 

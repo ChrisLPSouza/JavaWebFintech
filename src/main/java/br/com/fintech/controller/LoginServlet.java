@@ -1,6 +1,7 @@
 package br.com.fintech.controller;
 
 import br.com.fintech.dao.UsuarioDAO;
+import br.com.fintech.filter.LoginFilter;
 import br.com.fintech.model.Usuario;
 
 import javax.servlet.*;
@@ -43,6 +44,7 @@ public class LoginServlet extends HttpServlet {
                     if (usuario != null && usuario.getSenha().equals(senha)) {
                         HttpSession session = request.getSession();
                         if (session !=null) {
+                            LoginFilter.usuario = usuario;
                             session.setAttribute("usuario", usuario);
                             request.setAttribute("msg", "Usuario Autenticado!");
                             request.getRequestDispatcher("home.jsp").forward(request, response);

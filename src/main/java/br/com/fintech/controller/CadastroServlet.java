@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet(name = "CadastroServlet", value = "/cadastro-servlet")
+@WebServlet(name = "CadastroServlet", value = "/cadastro")
 public class CadastroServlet extends HttpServlet {
 
     @Override
@@ -38,10 +38,6 @@ public class CadastroServlet extends HttpServlet {
         usuario.setNome(nome);
         usuario.setEmail(email);
         usuario.setSenha(senha);
-        usuario.setTelefone("963256422");
-        usuario.setPais("Brasil");
-        usuario.setUserName(nome);
-
 
         UsuarioDAO dao = new UsuarioDAO();
 

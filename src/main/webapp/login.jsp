@@ -45,7 +45,7 @@
         </div>
       </div>
       <div class="d-flex justify-content-between mb-5">
-        <a href="cadastro-servlet"><label>Cadastre-se</label></a>
+        <a href="cadastro"><label>Cadastre-se</label></a>
         <a href="#"><label>Esqueci Senha</label></a>
       </div>
 

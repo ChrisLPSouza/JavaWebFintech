@@ -7,9 +7,6 @@ public class Usuario{
     private String senha;
     private String nome;
     private String email;
-    private String telefone;
-    private String pais;
-    private String userName;
 
     public Usuario() {
 
@@ -38,41 +35,18 @@ public class Usuario{
         this.email = email;
     }
 
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public String getPais() {
-        return pais;
-    }
-
-    public void setPais(String pais) {
-        this.pais = pais;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Usuario usuario = (Usuario) o;
-        return Objects.equals(senha, usuario.senha) && Objects.equals(nome, usuario.nome) && Objects.equals(email, usuario.email) && Objects.equals(telefone, usuario.telefone) && Objects.equals(pais, usuario.pais) && Objects.equals(userName, usuario.userName);
+        return Objects.equals(senha, usuario.senha) && Objects.equals(nome, usuario.nome) &&
+                Objects.equals(email, usuario.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(senha, nome, email, telefone, pais, userName);
+        return Objects.hash(senha, nome, email);
     }
 
     @Override
@@ -81,9 +55,6 @@ public class Usuario{
                 "senha='" + senha + '\'' +
                 ", nome='" + nome + '\'' +
                 ", email='" + email + '\'' +
-                ", telefone='" + telefone + '\'' +
-                ", pais='" + pais + '\'' +
-                ", userName='" + userName + '\'' +
                 '}';
     }
 }

@@ -13,9 +13,6 @@ public class MainUsuario {
         usuario.setNome("Jair Brava");
         usuario.setEmail("jair@mail.com");
         usuario.setSenha("1234");
-        usuario.setTelefone("963256422");
-        usuario.setPais("Brasil");
-        usuario.setUserName("jairbrava");
 
         UsuarioDAO dao = new UsuarioDAO();
 

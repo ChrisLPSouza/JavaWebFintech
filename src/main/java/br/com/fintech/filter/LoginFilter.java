@@ -1,5 +1,7 @@
 package br.com.fintech.filter;
 
+import br.com.fintech.model.Usuario;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +11,8 @@ import java.io.IOException;
 
 @WebFilter("/*")
 public class LoginFilter implements Filter {
+
+    public static Usuario usuario = null;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -25,11 +29,16 @@ public class LoginFilter implements Filter {
         HttpSession session = httpRequest.getSession();
         String url = httpRequest.getRequestURI();
         String loginURI = ((HttpServletRequest) request).getContextPath() + "/login";
+        String registerURI = ((HttpServletRequest) request).getContextPath() + "/cadastro";
 
-        boolean logado = session != null && session.getAttribute("usuario") != null;
+        Usuario user = (Usuario) session.getAttribute("usuario");
+        if(user == null) this.usuario = user;
+
+        boolean logado = session != null &&  user != null;
         boolean loginRequest = url.equals(loginURI);
+        boolean registerRequest = url.equals(registerURI);
 
-        if (logado || loginRequest) {
+        if (logado || loginRequest || registerRequest) {
             filter.doFilter(request, response);
         } else {
             ((HttpServletResponse) response).sendRedirect(loginURI);

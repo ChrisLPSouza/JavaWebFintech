@@ -16,20 +16,16 @@ public class UsuarioDAO {
     }
 
     public int insert(Usuario usuario) throws SQLException {
-        String sql = "insert into T_FIN_USUARIO (nm_usuario, ds_email, ds_senha, nr_telefone, nm_pais, nm_username)" +
-                "values (?, ?, ?, ?, ?, ?)" ;
+        String sql = "insert into T_FIN_USUARIO (nm_usuario, ds_email, ds_senha)" +
+                "values (?, ?, ?)" ;
 
         PreparedStatement stmt = null;
         try {
             stmt = connection.prepareStatement(sql);
 
-
             stmt.setString(1, usuario.getNome());
             stmt.setString(2, usuario.getEmail());
             stmt.setString(3, usuario.getSenha());
-            stmt.setString(4, usuario.getTelefone());
-            stmt.setString(5, usuario.getPais());
-            stmt.setString(6, usuario.getUserName());
 
             return stmt.executeUpdate();
          } catch (SQLException e) {
@@ -55,9 +51,6 @@ public class UsuarioDAO {
                 usuario.setSenha(rs.getString("ds_senha"));
                 usuario.setNome(rs.getString("nm_usuario"));
                 usuario.setEmail(rs.getString("ds_email"));
-                usuario.setTelefone(rs.getString("nr_telefone"));
-                usuario.setPais(rs.getString("nm_pais"));
-                usuario.setUserName(rs.getString("nm_username"));
 
                 usuarios.add(usuario);
             }
@@ -85,10 +78,6 @@ public class UsuarioDAO {
                 usuario.setSenha(rs.getString("ds_senha"));
                 usuario.setNome(rs.getString("nm_usuario"));
                 usuario.setEmail(rs.getString("ds_email"));
-                usuario.setTelefone(rs.getString("nr_telefone"));
-                usuario.setPais(rs.getString("nm_pais"));
-                usuario.setUserName(rs.getString("nm_username"));
-
             }
 
             rs.close();
@@ -113,9 +102,6 @@ public class UsuarioDAO {
         stmt.setString(1, usuario.getSenha());
         stmt.setString(2, usuario.getNome());
         stmt.setString(3, usuario.getEmail());
-        stmt.setString(4, usuario.getTelefone());
-        stmt.setString(5, usuario.getPais());
-        stmt.setString(6, usuario.getUserName());
 
         stmt.execute();
         stmt.close();
