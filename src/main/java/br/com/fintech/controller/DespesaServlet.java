@@ -9,6 +9,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 @WebServlet(name = "DespesaServlet", value = "/despesa-servlet")
 public class DespesaServlet extends HttpServlet {
@@ -23,6 +24,10 @@ public class DespesaServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        DespesaDAO dao = new DespesaDAO();
+        List<Despesa> lista = dao.getAll();
+
+        request.setAttribute("listaDespesas", lista);
         request.getRequestDispatcher("cadastra-despesa.jsp").forward(request, response);
     }
 
@@ -42,9 +47,12 @@ public class DespesaServlet extends HttpServlet {
         int row = dao.insert(despesa);
         if (row > 0) {
             request.setAttribute("msg", "Despesa cadastrada!");
+           List<Despesa> lista = dao.getAll();
+           request.setAttribute("listaDespesas", lista);
         } else {
             request.setAttribute("err", "Erro ao cadastrar despesa!");
         }
         request.getRequestDispatcher("cadastra-despesa.jsp").forward(request, response);
     }
-}
+
+ }

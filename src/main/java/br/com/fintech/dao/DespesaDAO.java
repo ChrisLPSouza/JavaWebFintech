@@ -32,7 +32,10 @@ public class DespesaDAO {
             return 0;
         } finally {
             try {
-                stmt.close();
+                if(stmt != null){
+                    stmt.close();
+                }
+
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
@@ -53,6 +56,7 @@ public class DespesaDAO {
                 despesa.setCodigo(rs.getInt("cd_despesa"));
                 despesa.setValor(rs.getFloat("vl_despesa"));
                 despesa.setNome(rs.getString("nm_despesa"));
+                despesa.setEmail(rs.getString("t_fin_usuario_ds_email"));
                 
                 despesas.add(despesa);
             }

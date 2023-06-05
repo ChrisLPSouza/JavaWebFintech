@@ -10,7 +10,7 @@ public class MainDespesas {
     public static void main(String[] args) {
 
         testaInsertDespesa();
-        testaGetAllDespesas();
+   //     testaGetAllDespesas();
 //        testaDespesaById();
 //        testaUpdateDespesa();
 //        testaDeleteDespesa();

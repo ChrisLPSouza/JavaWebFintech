@@ -10,10 +10,10 @@ public class MainReceitas {
 
     public static void main(String[] args) {
         testaInsertReceita();
-        testaGetAllReceitas();
-        testaReceitaById();
-       testaUpdateReceita();
-       testaDeleteReceita();
+       // testaGetAllReceitas();
+        //testaReceitaById();
+      // testaUpdateReceita();
+       //testaDeleteReceita();
 
     }
     private static void testaInsertReceita() {
@@ -22,7 +22,7 @@ public class MainReceitas {
         receita.setDescricao("Pix");
         receita.setRecorrencia("S");
         receita.setValor(350);
-        receita.setUserName("romeum");
+        receita.setUserName("lula@mail.com");
 
         ReceitaDAO dao = new ReceitaDAO();
         try {

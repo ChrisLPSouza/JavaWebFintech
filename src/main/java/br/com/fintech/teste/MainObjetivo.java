@@ -12,10 +12,10 @@ public class MainObjetivo {
     public static void main(String[] args) {
 
         testaInsertObjetivo();
-        testaObjetivoById();
-        testaGetAllObjetivo();
-        testaDeleteObjetivo();
-        testaUpdateObjetivo();
+       // testaObjetivoById();
+       // testaGetAllObjetivo();
+       // testaDeleteObjetivo();
+       // testaUpdateObjetivo();
     }
     private static void testaInsertObjetivo() {
 

@@ -16,8 +16,7 @@ public class UsuarioDAO {
     }
 
     public int insert(Usuario usuario) throws SQLException {
-        String sql = "insert into T_FIN_USUARIO (nm_usuario, ds_email, ds_senha)" +
-                "values (?, ?, ?)" ;
+        String sql = "insert into T_FIN_USUARIO (nm_usuario, ds_email, ds_senha) values (?, ?, ?)" ;
 
         PreparedStatement stmt = null;
         try {
@@ -32,7 +31,10 @@ public class UsuarioDAO {
             System.out.println("ERRO: "+ e.getMessage());
             return 0;
         } finally {
-            stmt.close();
+            if (stmt != null){
+                stmt.close();
+            }
+
         }
 
     }

@@ -16,7 +16,7 @@ public class ReceitaDAO {
     }
 
     public void insert(Receita receita) throws SQLException {
-        String sql = "insert into T_FIN_RECEITAS (cd_recebimento, ds_recebimento, st_recorrencia, vl_recebimento, T_FIN_USUARIO_nm_username )" +
+        String sql = "insert into T_FIN_RECEITAS (cd_recebimento, ds_recebimento, st_recorrencia, vl_recebimento, T_FIN_USUARIO_DS_EMAIL)" +
                 "values (SQ_RECEITAS.NEXTVAL, ?, ?, ?, ?)" ;
 
         PreparedStatement stmt = null;

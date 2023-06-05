@@ -17,7 +17,7 @@ public class ObjetivoDAO {
     }
     
     public void insert (Objetivo objetivo)  throws SQLException {
-        String sql = "insert into T_FIN_OBJETIVO (cd_objetivo, nm_objetivo, vl_meta, dt_objetivo)" +
+        String sql = "insert into T_FIN_OBJETIVO (cd_objetivo, nm_objetivo, vl_meta, dt_objetivo, T_FIN_USUARIO_DS_EMAIL)" +
                 "values (?, ?, ?, ?)" ;
         
         PreparedStatement stmt = null;

@@ -11,7 +11,6 @@ import java.io.IOException;
 
 @WebFilter("/*")
 public class LoginFilter implements Filter {
-
     public static Usuario usuario = null;
 
     @Override
