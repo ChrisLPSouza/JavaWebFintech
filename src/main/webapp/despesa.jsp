@@ -52,7 +52,7 @@
         <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1"
                     aria-expanded="false" aria-controls="multiCollapseExample1">Nova Despesa
         </button>
-    </p>
+  
     <!-- MODAL -->
     <div class="collapse multi-collapse" id="multiCollapseExample1">
         <div class="card card-body">

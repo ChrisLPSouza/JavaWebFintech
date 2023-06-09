@@ -56,12 +56,12 @@
 	<div class="d-grid gap-4 col-3 mx-auto">
 		<h1 class="title">Bem vindo ao Future Planner!</h1>
 		<p class="subtitle">Seu controle financeiro na palma da sua mão:</p>
-		<a class="btn btn-success btn-lg" href="conta-servlet" role="button">Conta</a>
+		
 		<a class="btn btn-success btn-lg" href="despesa-servlet" role="button">Despesas</a>
-		<a class="btn btn-success btn-lg" href="investimento-servlet"
-			role="button">Investimentos</a> <a class="btn btn-success btn-lg"
-			href="receita-servlet" role="button">Receitas</a> <a
-			class="btn btn-success btn-lg" href="objetivo-servlet" role="button">Objetivos</a>
+		<a class="btn btn-success btn-lg" href="receita-servlet" role="button">Receitas</a> 
+		<a class="btn btn-success btn-lg" href="investimento-servlet" role="button">Investimentos</a> 
+		<a class="btn btn-success btn-lg" href="objetivo-servlet" role="button">Objetivos</a>
+		<a class="btn btn-success btn-lg" href="conta-servlet" role="button">Conta</a>
 	</div>
 	<script type="text/javascript" src="resources/js/jquery-3.6.0.min.js"></script>
 	<script
