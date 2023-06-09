@@ -6,9 +6,27 @@
 
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Fintech Economize</title>
+    <title>Future Planner: Despesas</title>
     <meta property="og:title" content="Economize com nossa solução">
 </head>
+<header style= background-color:#198754;
+		class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+		<a href="/"
+			class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+			<svg class="bi me-2" width="40" height="32">
+				<use xlink:href="#bootstrap"></use></svg> <span style=color:#FFFFFF class="fs-4" >Future Planner</span>
+		</a>
+
+		<ul  class="nav nav-pills">
+			
+			<li  class="nav-item"><a style=--bs-nav-link-color:#FFFFFF href="home.jsp" class="nav-link">Home</a></li>
+			<li  class="nav-item"><a style=--bs-nav-link-color:#FFFFFF href="mailto:giselledias.joinville@gmail.com" class="nav-link">Fale
+					conosco</a></li>
+					
+			<li class="nav-item"><a style=--bs-nav-link-color:#FFFFFF href="about.jsp" class="nav-link">About</a></li>
+		</ul>
+
+	</header>
 
 <body>
 <c:if test="${not empty msg }">
@@ -28,15 +46,9 @@
 
 
 <div class="d-grid gap-4 col-3 mx-auto">
-    <h1 class="title">Criar Despesas</h1>
+    <h1 class="title">Cadastrar Despesas</h1>
 
-    <!-- BUTTON VOLTA PARA HOME -->
-    <p>
-        <a class="btn btn-success" href="home-servlet" role="button">Home</a>
-    </p>
-
-    <!-- BUTTON CHAMA MODAL -->
-    <p>
+ 
         <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1"
                     aria-expanded="false" aria-controls="multiCollapseExample1">Nova Despesa
         </button>
