@@ -6,9 +6,27 @@
 
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Fintech Future Planner</title>
+    <title>Future Planner: Conta</title>
     <meta property="og:title" content="Economize com nossa solução">
 </head>
+<header style= background-color:#198754;
+		class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+		<a href="/"
+			class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+			<svg class="bi me-2" width="40" height="32">
+				<use xlink:href="#bootstrap"></use></svg> <span style=color:#FFFFFF class="fs-4" >Future Planner</span>
+		</a>
+
+		<ul  class="nav nav-pills">
+			
+			<li  class="nav-item"><a style=--bs-nav-link-color:#FFFFFF href="home.jsp" class="nav-link">Home</a></li>
+			<li  class="nav-item"><a style=--bs-nav-link-color:#FFFFFF href="mailto:giselledias.joinville@gmail.com" class="nav-link">Fale
+					conosco</a></li>
+					
+			<li class="nav-item"><a style=--bs-nav-link-color:#FFFFFF href="about.jsp" class="nav-link">About</a></li>
+		</ul>
+
+	</header>
 
 <body>
 <c:if test="${not empty msg }">
@@ -30,39 +48,40 @@
 <div class="d-grid gap-4 col-3 mx-auto">
     <h1 class="title">Cadastrar Conta</h1>
 
-    <!-- BUTTON VOLTA PARA HOME -->
-    <p>
-        <a class="btn btn-success" href="home-servlet" role="button">Home</a>
-    </p>
-
-    <!-- BUTTON CHAMA MODAL -->
-    <p>
+ 
         <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1"
                     aria-expanded="false" aria-controls="multiCollapseExample1">Nova Conta
         </button>
-    </p>
+  
     <!-- MODAL -->
     <div class="collapse multi-collapse" id="multiCollapseExample1">
         <div class="card card-body">
             <form class="row g-3 needs-validation was-validated" novalidate=""
-                  action="conta-servlet" method="post">
+                  action="despesa-servlet" method="post">
 
                 <div class="d-grid gap-4 mb-3">
-                    <input type="text" name="nome" class="form-control" placeholder="Nome">
+                    <input type="number" name="agency" class="form-control" placeholder="Agencia">
                     <div class="invalid-feedback">
-                        Nome da Despesa
+                        Nome da Agencia
                     </div>
                 </div>
                 <div class="d-grid gap-4 mb-3">
-                    <input type="number" name="valor" class="form-control" placeholder="Valor">
+                    <input type="number" name="NrConta" class="form-control" placeholder="Numero da Conta">
                     <div class="invalid-feedback">
-                        Valor da despesa
+                        Numero da Conta
+                    </div>
+                </div>
+                <div class="d-grid gap-4 mb-3">
+                    <input type="number" name="numBanco" class="form-control" placeholder="Numero do Banco">
+                    <div class="invalid-feedback">
+                        Numeor do Banco
                     </div>
                 </div>
 
                 <div class="d-grid gap-4">
                     <button type="submit" class="btn btn-success btn-lg">Cadastrar</button>
                 </div>
+                
 
             </form>
         </div>
@@ -71,18 +90,20 @@
 </div>
 
 <div class="d-grid gap-4 col-3 mx-auto mt-4">
-    <h4 class="title">Minhas Despesas</h4>
+    <h4 class="title">Minhas Contas</h4>
     <table class="table table-striped table-bordered table-gray">
         <tr>
             <th colspan="2" class="table-active">Id</th>
-            <th colspan="2" class="table-active">Descrição</th>
-            <th colspan="2" class="table-active">Valor</th>
+            <th colspan="2" class="table-active">Agencia</th>
+            <th colspan="2" class="table-active">Numero da Conta</th>
+            <th colspan="2" class="table-active">Numero do Banco</th>
         </tr>
-        <c:forEach var="despesa" items="${ listaDespesas }">
+        <c:forEach var="conta" items="${ listaContas }">
             <tr>
-                <td colspan="2" class="table-active">${despesa.codigo}</td>
-                <td colspan="2" class="table-active">${despesa.nome}</td>
-                <td colspan="2" class="table-active">${despesa.valor}</td>
+                <td colspan="2" class="table-active">${conta.codigo}</td>
+                <td colspan="2" class="table-active">${conta.agency}</td>
+                <td colspan="2" class="table-active">${conta.nrConta}</td>
+                 <td colspan="2" class="table-active">${conta.numBanco}</td>
             </tr>
         </c:forEach>
     </table>
