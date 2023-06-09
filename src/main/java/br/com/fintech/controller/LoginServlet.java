@@ -48,7 +48,6 @@ public class LoginServlet extends HttpServlet {
                             session.setAttribute("usuario", usuario);
                             request.setAttribute("msg", "Usuario Autenticado!");
                             request.getRequestDispatcher("home.jsp").forward(request, response);
-                            return;
                         }
                     } else {
                         request.setAttribute("err", "E-mail ou Senha inválidos!" );

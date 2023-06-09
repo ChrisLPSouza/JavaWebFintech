@@ -68,13 +68,13 @@
 
                 <div class="d-grid gap-4 col-3 mx-auto m-5">
                     <h4 class="title">Meus Objetivos</h4>
-                    <table class="table table-striped table-gray">
+                    <table class="table table-striped table-bordered table-gray">
                         <tr>
                             <th colspan="2" class="table-active">Id</th>
                             <th colspan="2" class="table-active">Descrição</th>
                             <th colspan="2" class="table-active">Valor</th>
                         </tr>
-                        <c:forEach var="investimento" items="${ listaObjetivos }">
+                        <c:forEach var="objetivo" items="${ listaObjetivos }">
                             <tr>
                                 <td colspan="2" class="table-active">${objetivo.codigo}</td>
                                 <td colspan="2" class="table-active">${objetivo.descricao}</td>

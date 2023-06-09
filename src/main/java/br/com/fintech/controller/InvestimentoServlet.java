@@ -3,8 +3,6 @@ package br.com.fintech.controller;
 import br.com.fintech.dao.InvestimentoDAO;
 import br.com.fintech.filter.LoginFilter;
 import br.com.fintech.model.Investimento;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,17 +28,11 @@ public class InvestimentoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         super.doGet(request, response);
-        InvestimentoDAO dao = new InvestimentoDAO();
-        List<Investimento> lista = dao.getAll();
-
-        request.setAttribute("listaInvestimentos", lista);
-
-        if (!response.isCommitted()){
-            request.getRequestDispatcher("investimento.jsp").forward(request, response);
-            return;
-        }
-
-        request.getRequestDispatcher("investimento.jsp").forward(request, response);
+//        InvestimentoDAO dao = new InvestimentoDAO();
+//        List<Investimento> lista = dao.getAll();
+//
+//        request.setAttribute("listaInvestimentos", lista);
+        request.getRequestDispatcher("invest.jsp").forward(request, response);
     }
 
     @Override
@@ -77,7 +69,7 @@ public class InvestimentoServlet extends HttpServlet {
         } else {
             request.setAttribute("err", "Erro ao cadastrar investimento!");
         }
-        request.getRequestDispatcher("investimento.jsp").forward(request, response);
+        request.getRequestDispatcher("invest.jsp").forward(request, response);
     }
 
     @Override

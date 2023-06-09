@@ -56,5 +56,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="@popperjs/core" level="application" />
   </component>
 </module>
