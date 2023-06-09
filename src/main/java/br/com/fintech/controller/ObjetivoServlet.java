@@ -26,7 +26,7 @@ import java.util.List;
         protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             super.doGet(request, response);
             ObjetivoDAO dao = new ObjetivoDAO();
-            List<Objetivo> lista = dao.getAll();
+            List<Objetivo> lista = dao.getAllById(LoginFilter.usuario.getEmail());
 
             request.setAttribute("listaObjetivos", lista);
             request.getRequestDispatcher("objetivo.jsp").forward(request, response);
@@ -52,7 +52,7 @@ import java.util.List;
             int row = dao.insert(objetivo);
             if (row > 0) {
                 request.setAttribute("msg", "Objetivo cadastrado!");
-                List<Objetivo> lista = dao.getAll();
+                List<Objetivo> lista = dao.getAllById(LoginFilter.usuario.getEmail());
                 request.setAttribute("listaObjetivos", lista);
             } else {
                 request.setAttribute("err", "Erro ao cadastrar objetivo!");

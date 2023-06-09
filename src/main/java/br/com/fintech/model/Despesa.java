@@ -2,7 +2,7 @@ package br.com.fintech.model;
 
 import java.io.Serializable;
 
-public class Despesa implements Serializable{
+public class Despesa {
     private int codigo;
     private float valor;
     private String nome;

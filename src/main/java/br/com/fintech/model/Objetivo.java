@@ -5,7 +5,7 @@ import java.sql.Date;
 
 
 
-public class Objetivo implements Serializable {
+public class Objetivo {
 	private int codigo;
 	private String descricao;
 	private double valor;

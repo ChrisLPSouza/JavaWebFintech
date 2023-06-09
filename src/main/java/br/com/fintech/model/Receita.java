@@ -2,7 +2,7 @@ package br.com.fintech.model;
 
 import java.io.Serializable;
 
-public class Receita implements Serializable{
+public class Receita {
     private int codigo;
     private String descricao;
     private String recorrencia;
@@ -15,7 +15,6 @@ public class Receita implements Serializable{
     }
 
 	public Receita(int codigo, String descricao, String recorrencia, float valor, String email) {
-		super();
 		this.codigo = codigo;
 		this.descricao = descricao;
 		this.recorrencia = recorrencia;

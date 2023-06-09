@@ -47,9 +47,9 @@ public class ReceitaDAO {
         }
     }
 
-    public List<Receita> getAll() {
+    public List<Receita> getAllById(String email) {
         List<Receita> receitas = new ArrayList<Receita>();
-        String sql = "select * from T_FIN_RECEITAS";
+        String sql = "select * from T_FIN_RECEITAS where T_FIN_USUARIO_DS_EMAIL='"+ email + "'";
         try {
             Statement stmt = connection.createStatement();
 

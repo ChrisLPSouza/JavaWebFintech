@@ -2,7 +2,7 @@ package br.com.fintech.model;
 
 import java.io.Serializable;
 
-public class Conta implements Serializable {
+public class Conta {
 
     private int idConta;
     private int agencia;

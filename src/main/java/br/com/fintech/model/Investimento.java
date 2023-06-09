@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.sql.Date;
 
 
-public class Investimento implements Serializable {
+public class Investimento {
 
     private int cdInvestimento;
     private String nome;
