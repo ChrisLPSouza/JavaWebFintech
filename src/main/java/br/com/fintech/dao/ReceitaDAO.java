@@ -61,7 +61,7 @@ public class ReceitaDAO {
                 receita.setDescricao(rs.getString("ds_recebimento"));
                 receita.setRecorrencia(rs.getString("st_recorrencia"));
                 receita.setValor(rs.getFloat("vl_recebimento"));
-                receita.setEmail(rs.getString("ds_email"));
+                receita.setEmail(rs.getString("t_fin_usuario_ds_email"));
 
                 receitas.add(receita);
             }
