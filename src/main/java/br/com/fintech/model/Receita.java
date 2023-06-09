@@ -8,18 +8,19 @@ public class Receita implements Serializable{
     private String recorrencia;
     private float valor;
 
-	private String userName;
+	private String email;
 
     public Receita() {
 
     }
 
-	public Receita(int codigo, String descricao, String recorrencia, float valor) {
+	public Receita(int codigo, String descricao, String recorrencia, float valor, String email) {
 		super();
 		this.codigo = codigo;
 		this.descricao = descricao;
 		this.recorrencia = recorrencia;
 		this.valor = valor;
+		this.email = email;
 	}
 
 
@@ -57,12 +58,12 @@ public class Receita implements Serializable{
 	}
 
 
-	public String getUserName() {
-		return userName;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	@Override
@@ -72,7 +73,7 @@ public class Receita implements Serializable{
 				", descricao='" + descricao + '\'' +
 				", recorrencia='" + recorrencia + '\'' +
 				", valor=" + valor +
-				", userName='" + userName + '\'' +
+				", email='" + email + '\'' +
 				'}';
 	}
 }

@@ -14,29 +14,38 @@ public class InvestimentoDAO {
         ConnectionFactory factory = new ConnectionFactory();
         connection = factory.conectar();
     }
-    public void insert(Investimento investimento)  {
-        String sql = "insert into T_FIN_INVESTIMENTO (cd_investimento, vl_investimento, dt_inicial, dt_resgate, T_FIN_USUARIO_NM_USERNAME)" +
-                "values (SQ_INVESTIMENTO.NEXTVAL, ?, ?, ?, ?)" ;
+
+    public int insert(Investimento investimento) {
+        String sql = "insert into T_FIN_INVESTIMENTO (cd_investimento, nm_investimento, vl_investimento, dt_inicial, dt_resgate, T_FIN_USUARIO_DS_EMAIL)" +
+                "values (SQ_INVESTIMENTO.NEXTVAL, ?, ?, ?, ?, ?)";
 
         PreparedStatement stmt = null;
         try {
             stmt = connection.prepareStatement(sql);
 
-            stmt.setFloat(1, investimento.getVlInvestimento());
-            stmt.setDate(2, investimento.getDtInicial());
-            stmt.setDate(3, investimento.getDtResgate());
-            stmt.setString(4, investimento.getNmUserName());
+            stmt.setString(1, investimento.getNome());
+            stmt.setFloat(2, investimento.getVlInvestimento());
+            stmt.setDate(3, investimento.getDtInicial());
+            stmt.setDate(4, investimento.getDtResgate());
+            stmt.setString(5, investimento.getEmail());
 
-            stmt.execute();
-            stmt.close();
+            int row = stmt.executeUpdate();
             System.out.println("Investimento inserido com sucesso!");
+            return row;
         } catch (SQLException e) {
-            System.out.println("Erro: " +e.getMessage());
+            System.out.println("Erro: " + e.getMessage());
+            return 0;
+        } finally {
+            try {
+                if(stmt != null){
+                    stmt.close();
+                }
 
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
-
     }
-
     public List<Investimento> getAll() {
 
         List<Investimento> investimentos = new ArrayList<Investimento>();
@@ -49,10 +58,11 @@ public class InvestimentoDAO {
             while(rs.next()) {
                 Investimento investimento = new Investimento();
                 investimento.setCdInvestimento(rs.getInt("cd_investimento"));
+                investimento.setNome(rs.getString("nm_investimento"));
                 investimento.setVlInvestimento(rs.getFloat("vl_investimento"));
                 investimento.setDtInicial(rs.getDate("dt_inicial"));
                 investimento.setDtResgate(rs.getDate("dt_resgate"));
-                investimento.setNmUserName(rs.getString("t_fin_usuario_nm_username"));
+                investimento.setEmail(rs.getString("t_fin_usuario_ds_email"));
 
                 investimentos.add(investimento);
             }
@@ -78,10 +88,11 @@ public class InvestimentoDAO {
             while (rs.next()) {
                 investimento = new Investimento();
                 investimento.setCdInvestimento(rs.getInt("cd_investimento"));
+                investimento.setNome(rs.getString("nm_investimento"));
                 investimento.setVlInvestimento(rs.getFloat("vl_investimento"));
                 investimento.setDtInicial(rs.getDate("dt_inicial"));
                 investimento.setDtResgate(rs.getDate("dt_resgate"));
-                investimento.setNmUserName(rs.getString("t_fin_usuario_nm_username"));
+                investimento.setEmail(rs.getString("t_fin_usuario_ds_email"));
 
             }
 
@@ -107,15 +118,16 @@ public class InvestimentoDAO {
 
     }
     public void update(Investimento investimento) {
-        String sql = "update T_FIN_INVESTIMENTO set vl_investimento=?, dt_inicial=?, dt_resgate=?, T_FIN_USUARIO_NM_USERNAME=? where cd_investimento=?";
+        String sql = "update T_FIN_INVESTIMENTO set nm_investimento=?, vl_investimento=?, dt_inicial=?, dt_resgate=?, T_FIN_USUARIO_DS_EMAIL=? where cd_investimento=?";
         try{
             PreparedStatement stmt = connection.prepareStatement(sql);
 
-            stmt.setFloat(1, investimento.getVlInvestimento());
-            stmt.setDate(2, investimento.getDtInicial());
-            stmt.setDate(3, investimento.getDtResgate());
-            stmt.setString(4, investimento.getNmUserName());
-            stmt.setInt(5, investimento.getCdInvestimento());
+            stmt.setString(1, investimento.getNome());
+            stmt.setFloat(2, investimento.getVlInvestimento());
+            stmt.setDate(3, investimento.getDtInicial());
+            stmt.setDate(4, investimento.getDtResgate());
+            stmt.setString(5, investimento.getEmail());
+            stmt.setInt(6, investimento.getCdInvestimento());
 
             stmt.execute();
             stmt.close();

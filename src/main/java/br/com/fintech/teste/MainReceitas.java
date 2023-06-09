@@ -22,13 +22,13 @@ public class MainReceitas {
         receita.setDescricao("Pix");
         receita.setRecorrencia("S");
         receita.setValor(350);
-        receita.setUserName("lula@mail.com");
+        receita.setEmail("lula@mail.com");
 
         ReceitaDAO dao = new ReceitaDAO();
         try {
             dao.insert(receita);
 
-        } catch (SQLException e) {
+        } catch (Exception e) {
 
             System.out.println("Erro ao inserir os dados \n" + e.getMessage());
         }

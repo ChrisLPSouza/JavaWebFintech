@@ -28,7 +28,7 @@ public class DespesaServlet extends HttpServlet {
         List<Despesa> lista = dao.getAll();
 
         request.setAttribute("listaDespesas", lista);
-        request.getRequestDispatcher("cadastra-despesa.jsp").forward(request, response);
+        request.getRequestDispatcher("despesa.jsp").forward(request, response);
     }
 
     @Override
@@ -52,7 +52,7 @@ public class DespesaServlet extends HttpServlet {
         } else {
             request.setAttribute("err", "Erro ao cadastrar despesa!");
         }
-        request.getRequestDispatcher("cadastra-despesa.jsp").forward(request, response);
+        request.getRequestDispatcher("despesa.jsp").forward(request, response);
     }
 
  }

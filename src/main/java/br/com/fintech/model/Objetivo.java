@@ -11,7 +11,7 @@ public class Objetivo implements Serializable {
 	private double valor;
 	private Date data;
 
-	private String userName;
+	private String email;
 	
 	
 	public Objetivo() {
@@ -19,11 +19,12 @@ public class Objetivo implements Serializable {
 	}
 
 	
-	public Objetivo(int codigo, String descricao, double valor, Date data) {
+	public Objetivo(int codigo, String descricao, double valor, Date data, String email) {
 		this.codigo = codigo;
 		this.descricao = descricao;
 		this.valor = valor;
 		this.data = data;
+		this.email = email;
 	}
 
 
@@ -60,12 +61,12 @@ public class Objetivo implements Serializable {
 	}
 
 
-	public String getUserName() {
-		return userName;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	@Override
@@ -75,7 +76,7 @@ public class Objetivo implements Serializable {
 				", descricao='" + descricao + '\'' +
 				", valor=" + valor +
 				", data=" + data +
-				", userName='" + userName + '\'' +
+				", email='" + email + '\'' +
 				'}';
 	}
 }

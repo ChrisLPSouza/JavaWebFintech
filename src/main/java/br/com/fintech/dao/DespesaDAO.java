@@ -69,6 +69,32 @@ public class DespesaDAO {
             return null;
         }
     }
+    public List<Despesa> getAllById() {
+        List<Despesa> despesas = new ArrayList<Despesa>();
+        String sql = "select * from T_FIN_DESPESAS where T_FIN_USUARIO_DS_EMAIL=?";
+        try {
+            Statement stmt = connection.createStatement();
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next()) {
+                Despesa despesa = new Despesa();
+                despesa.setCodigo(rs.getInt("cd_despesa"));
+                despesa.setValor(rs.getFloat("vl_despesa"));
+                despesa.setNome(rs.getString("nm_despesa"));
+                despesa.setEmail(rs.getString("t_fin_usuario_ds_email"));
+
+                despesas.add(despesa);
+            }
+            rs.close();
+            stmt.close();
+            return despesas;
+
+        } catch (SQLException e) {
+            System.out.println("Erro: " + e.getMessage());
+            return null;
+        }
+    }
     public Despesa selectById(int codigo) {
         Despesa despesa = null;
         String sql = "select * from T_FIN_DESPESAS where cd_despesa=?";

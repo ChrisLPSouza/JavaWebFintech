@@ -20,9 +20,9 @@ public class MainDespesas {
     private static void testaInsertDespesa() {
 
         Despesa despesa = new Despesa();
-        despesa.setValor(1200);
-        despesa.setNome("lulinha");
-        despesa.setEmail("lula@mail.com");
+        despesa.setValor(560);
+        despesa.setNome("Açougue");
+        despesa.setEmail("cris@mail.com");
 
         DespesaDAO dao = new DespesaDAO();
         dao.insert(despesa);
@@ -63,6 +63,10 @@ public class MainDespesas {
 
         DespesaDAO dao = new DespesaDAO();
         dao.delete(3);
+
+    }
+
+    private void testa() {
 
     }
 }

@@ -6,7 +6,7 @@
 
 <head>
 
-    <link rel="stylesheet" href="resources/css/fintech.css">
+<%--    <link rel="stylesheet" href="resources/css/fintech.css">--%>
     <title>Fintech Economize</title>
     <meta property="og:title" content="Economize com nossa solução">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -28,23 +28,23 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 </c:if>
-<header>
-    <main>
-        <article>
-        </article>
-        <section>
-        </section>
-    </main>
-</header>
+<%--<header>--%>
+<%--    <main>--%>
+<%--        <article>--%>
+<%--        </article>--%>
+<%--        <section>--%>
+<%--        </section>--%>
+<%--    </main>--%>
+<%--</header>--%>
 
 <div class="d-grid gap-4 col-3 mx-auto">
     <h1 class="title">Bem vindo a Economize!</h1>
     <p class="subtitle">Seu controle financeiro na palma <br>da sua mão</p>
+    <a class="btn btn-success btn-lg" href="conta-servlet" role="button">Conta</a>
     <a class="btn btn-success btn-lg" href="despesa-servlet" role="button">Despesas</a>
-<%--    <button type="button" class="btn btn-success btn-lg">Cartão de Crédito</button>--%>
-<%--    <button type="button" class="btn btn-success btn-lg">Investimentos</button>--%>
-<%--    <button type="button" class="btn btn-success btn-lg">Consultar Score</button>--%>
-<%--    <button type="button" class="btn btn-success btn-lg">Exportar Relatórios</button>--%>
+    <a class="btn btn-success btn-lg" href="investimento-servlet" role="button">Investimentos</a>
+    <a class="btn btn-success btn-lg" href="receita-servlet" role="button">Receitas</a>
+    <a class="btn btn-success btn-lg" href="objetivo-servlet" role="button">Objetivos</a>
 </div>
 <script type="text/javascript" src="resources/js/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"

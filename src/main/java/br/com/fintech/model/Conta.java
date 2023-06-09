@@ -8,7 +8,7 @@ public class Conta implements Serializable {
     private int agencia;
     private int nrConta;
     private int nrBanco;
-    private String nmUsername;
+    private String email;
 
     public Conta () {
 
@@ -46,12 +46,12 @@ public class Conta implements Serializable {
         this.nrBanco = nrBanco;
     }
 
-    public String getNmUsername() {
-        return nmUsername;
+    public String getEmail() {
+        return email;
     }
 
-    public void setNmUsername(String nmUsername) {
-        this.nmUsername = nmUsername;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
@@ -61,7 +61,7 @@ public class Conta implements Serializable {
                 ", agencia=" + agencia +
                 ", nrConta=" + nrConta +
                 ", nrBanco=" + nrBanco +
-                ", nmUsername='" + nmUsername + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 }

@@ -15,9 +15,9 @@ public class ReceitaDAO {
         connection = factory.conectar();
     }
 
-    public void insert(Receita receita) throws SQLException {
+    public int insert(Receita receita) {
         String sql = "insert into T_FIN_RECEITAS (cd_recebimento, ds_recebimento, st_recorrencia, vl_recebimento, T_FIN_USUARIO_DS_EMAIL)" +
-                "values (SQ_RECEITAS.NEXTVAL, ?, ?, ?, ?)" ;
+                "values (SQ_RECEITAS.NEXTVAL, ?, ?, ?, ?)";
 
         PreparedStatement stmt = null;
         try {
@@ -26,16 +26,25 @@ public class ReceitaDAO {
             stmt.setString(1, receita.getDescricao());
             stmt.setString(2, receita.getRecorrencia());
             stmt.setFloat(3, receita.getValor());
-            stmt.setString(4, receita.getUserName());
+            stmt.setString(4, receita.getEmail());
 
-            stmt.execute();
-            stmt.close();
-            System.out.println("Receita inserida com sucesso!");
+            int row = stmt.executeUpdate();
+            System.out.print("Receita cadastrada com sucesso");
+            return row;
         } catch (SQLException e) {
-            System.err.println("Erro: "+ e.getMessage());
+            System.out.println("Erro: " + e.getMessage());
+            return 0;
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
 
         }
-
     }
 
     public List<Receita> getAll() {
@@ -52,7 +61,7 @@ public class ReceitaDAO {
                 receita.setDescricao(rs.getString("ds_recebimento"));
                 receita.setRecorrencia(rs.getString("st_recorrencia"));
                 receita.setValor(rs.getFloat("vl_recebimento"));
-              //  receita.setUsuario(rs.getString("nm_username"));
+                receita.setEmail(rs.getString("ds_email"));
 
                 receitas.add(receita);
             }
@@ -81,7 +90,7 @@ public class ReceitaDAO {
                 receita.setDescricao(rs.getString("ds_recebimento"));
                 receita.setRecorrencia(rs.getString("st_recorrencia"));
                 receita.setValor(rs.getFloat("vl_recebimento"));
-                receita.setUserName(rs.getString("t_fin_usuario_nm_username"));
+                receita.setEmail(rs.getString("t_fin_usuario_ds_email"));
             }
 
             rs.close();

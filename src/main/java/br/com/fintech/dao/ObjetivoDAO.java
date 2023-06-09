@@ -16,24 +16,36 @@ public class ObjetivoDAO {
         connection = factory.conectar();
     }
     
-    public void insert (Objetivo objetivo)  throws SQLException {
-        String sql = "insert into T_FIN_OBJETIVO (cd_objetivo, nm_objetivo, vl_meta, dt_objetivo, T_FIN_USUARIO_DS_EMAIL)" +
-                "values (?, ?, ?, ?)" ;
-        
+    public int insert (Objetivo objetivo) {
+        String sql = "insert into T_FIN_OBJETIVO (cd_objetivo, ds_objetivo, vl_meta, dt_objetivo, T_FIN_USUARIO_DS_EMAIL)" +
+                "values (SQ_OBJETIVOS.nextval, ?, ?, ?, ?)";
+
         PreparedStatement stmt = null;
         try {
+            Date dataObjetivo = new Date(new java.util.Date().getTime());
             stmt = connection.prepareStatement(sql);
 
-            stmt.setInt(1, objetivo.getCodigo());
-            stmt.setString(2, objetivo.getDescricao());
-            stmt.setDouble(3, objetivo.getValor());
-            Date dataObjetivo = new Date(new java.util.Date().getTime());
-            stmt.setDate(4, dataObjetivo);
-           
+            stmt.setString(1, objetivo.getDescricao());
+            stmt.setDouble(2, objetivo.getValor());
+            stmt.setDate(3, dataObjetivo);
+            stmt.setString(4, objetivo.getEmail());
 
-            stmt.execute();
+
+            int row = stmt.executeUpdate();
+            System.out.print("Objetivo cadastrado com sucesso");
+            return row;
         } catch (SQLException e) {
-            stmt.close();
+            System.out.println("Erro: " + e.getMessage());
+            return 0;
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
     
@@ -52,9 +64,7 @@ public class ObjetivoDAO {
                  objetivo.setCodigo(rs.getInt("cd_objetivo"));
                  objetivo.setDescricao(rs.getString("nm_objetivo"));
                  objetivo.setValor(rs.getDouble("vl_meta"));
-                 
                  objetivo.setData(rs.getDate("dt_objetivo"));
-                 
 
                  objetivos.add(objetivo);
              }

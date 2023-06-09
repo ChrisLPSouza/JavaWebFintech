@@ -58,7 +58,7 @@ public class MainObjetivo {
             dao.insert(computador);
 
             System.out.println("Objetivo inserido com sucesso!");
-        } catch (SQLException e){
+        } catch (Exception e){
 
             System.out.println("Erro ao inserir os dados \n"+ e.getMessage());
         }

@@ -1,6 +1,7 @@
 package br.com.fintech.teste;
 
 import br.com.fintech.dao.ContaDAO;
+import br.com.fintech.filter.LoginFilter;
 import br.com.fintech.model.Conta;
 
 import java.util.List;
@@ -10,10 +11,10 @@ public class MainConta {
 
     public static void main(String[] args) {
 
-      // testaInsert();
+     testaInsert();
        // testaGetAll();
         //testaContaById();
-        testaUpdate();
+       // testaUpdate();
        // testaDelete();
 
     }
@@ -26,7 +27,7 @@ public class MainConta {
         conta.setAgencia(44);
         conta.setNrConta(sequence.nextInt(9999));
         conta.setNrBanco(1);
-        conta.setNmUsername("CARLOSEDU");
+        conta.setEmail(LoginFilter.usuario.getEmail());
 
         ContaDAO dao = new ContaDAO();
         dao.insert(conta);
@@ -61,7 +62,7 @@ public class MainConta {
         conta.setAgencia(526);
         conta.setNrConta(131919);
         conta.setNrBanco(331);
-        conta.setNmUsername("CARLOSEDU");
+        conta.setEmail(LoginFilter.usuario.getEmail());
 
         ContaDAO dao = new ContaDAO();
         dao.update(conta);

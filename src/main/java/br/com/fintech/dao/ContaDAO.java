@@ -14,25 +14,34 @@ public class ContaDAO {
         ConnectionFactory factory = new ConnectionFactory();
         connection = factory.conectar();
     }
-    public void insert(Conta conta) {
-        String sql = "insert into T_FIN_CONTA (id_conta, nr_agencia, nr_conta, T_FIN_BANCO_NR_BANCO, T_FIN_USUARIO_NM_USERNAME)" +
-                "values (?, ?, ?, ?, ?)" ;
+    public int insert(Conta conta) {
+        String sql = "insert into T_FIN_CONTA (id_conta, nr_agencia, nr_conta, T_FIN_BANCO_NR_BANCO, T_FIN_USUARIO_DS_EMAIL)" +
+                "values (SQ_CONTA.NEXTVAL, ?, ?, ?, ?)" ;
 
         PreparedStatement stmt = null;
         try {
             stmt = connection.prepareStatement(sql);
 
-            stmt.setInt(1, conta.getIdConta());
-            stmt.setInt(2, conta.getAgencia());
-            stmt.setInt(3, conta.getNrConta());
-            stmt.setInt(4, conta.getNrBanco());
-            stmt.setString(5, conta.getNmUsername());
+            stmt.setInt(1, conta.getAgencia());
+            stmt.setInt(2, conta.getNrConta());
+            stmt.setInt(3, conta.getNrBanco());
+            stmt.setString(4, conta.getEmail());
 
-            stmt.execute();
-            stmt.close();
+            int row = stmt.executeUpdate();
             System.out.println("Conta inserida com sucesso!");
+            return row;
         } catch (SQLException e) {
-            System.err.println("Erro: " +e.getMessage());
+            System.out.println("Erro: " + e.getMessage());
+            return 0;
+        } finally {
+            try {
+                if(stmt != null){
+                    stmt.close();
+                }
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
 
     }
@@ -52,7 +61,7 @@ public class ContaDAO {
                 conta.setAgencia(rs.getInt("nr_agencia"));
                 conta.setNrConta(rs.getInt("nr_conta"));
                 conta.setNrBanco(rs.getInt("t_fin_banco_nr_banco"));
-                conta.setNmUsername(rs.getString("t_fin_usuario_nm_username"));
+                conta.setEmail(rs.getString("t_fin_usuario_ds_email"));
 
                 contas.add(conta);
             }
@@ -81,7 +90,7 @@ public class ContaDAO {
                 conta.setAgencia(rs.getInt("nr_agencia"));
                 conta.setNrConta(rs.getInt("nr_conta"));
                 conta.setNrBanco(rs.getInt("t_fin_banco_nr_banco"));
-                conta.setNmUsername(rs.getString("t_fin_usuario_nm_username"));
+                conta.setEmail(rs.getString("t_fin_usuario_ds_email"));
             }
 
             rs.close();
@@ -106,14 +115,14 @@ public class ContaDAO {
 
     }
     public void update(Conta conta) {
-        String sql = "update T_FIN_CONTA set nr_agencia=?, nr_conta=?, T_FIN_BANCO_NR_BANCO=?, T_FIN_USUARIO_NM_USERNAME=? where id_conta=?";
+        String sql = "update T_FIN_CONTA set nr_agencia=?, nr_conta=?, T_FIN_BANCO_NR_BANCO=?, T_FIN_USUARIO_DS_EMAIL=? where id_conta=?";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
 
             stmt.setInt(1, conta.getAgencia());
             stmt.setInt(2, conta.getNrConta());
             stmt.setInt(3, conta.getNrBanco());
-            stmt.setString(4, conta.getNmUsername());
+            stmt.setString(4, conta.getEmail());
             stmt.setInt(5, conta.getIdConta());
 
             stmt.execute();

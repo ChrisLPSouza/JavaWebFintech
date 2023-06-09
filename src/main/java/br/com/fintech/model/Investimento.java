@@ -7,10 +7,11 @@ import java.sql.Date;
 public class Investimento implements Serializable {
 
     private int cdInvestimento;
+    private String nome;
     private float vlInvestimento;
     private Date dtInicial;
     private Date dtResgate;
-    private String nmUserName;
+    private String email;
 
 
     public Investimento () {
@@ -23,6 +24,14 @@ public class Investimento implements Serializable {
 
     public void setCdInvestimento(int cdInvestimento) {
         this.cdInvestimento = cdInvestimento;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public float getVlInvestimento() {
@@ -49,23 +58,23 @@ public class Investimento implements Serializable {
         this.dtResgate = dtResgate;
     }
 
-    public String getNmUserName() {
-        return nmUserName;
+    public String getEmail() {
+        return email;
     }
 
-    public void setNmUserName(String nmUserName) {
-        this.nmUserName = nmUserName;
+    public void setEmail(String email) {
+        this.email = email;
     }
-
 
     @Override
     public String toString() {
         return "Investimento{" +
                 "cdInvestimento=" + cdInvestimento +
+                ", nome='" + nome + '\'' +
                 ", vlInvestimento=" + vlInvestimento +
                 ", dtInicial=" + dtInicial +
                 ", dtResgate=" + dtResgate +
-                ", nmUserName='" + nmUserName + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 }
