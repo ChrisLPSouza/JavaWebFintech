@@ -3,24 +3,22 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="pt-br">
+<style>
+h1 {font-size:100px;
+		color: black;
+		}
+</style>
 
 <head>
     <link rel="stylesheet" href="resources/css/fintech_cadastro.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Fintech Economize</title>
+    <title>Future Planner: Cadastre-se!</title>
     <meta property="og:title" content="Economize com nossa solução">
 </head>
-<header>
 
-    <main>
-        <article>
 
-        </article>
-
-    </main>
-</header>
-
-<body>
+<body
+	style="background-color: #85FFBD; background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);">
 <c:if test="${not empty msg }">
 
     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -36,7 +34,7 @@
     </div>
 </c:if>
     <div class="d-grid gap-4 col-3 mx-auto m-5">
-        <h1 class="title">Complete seu cadastro <br>para acessar os serviços</h1>
+        <h1 class="title">Complete seu cadastro para planejar seu futuro!</h1>
         <form action="cadastro" method="post">
             <div class="d-grid gap-4 mb-3">
                 <input type="text" name="nome" class="form-control" id="exampleFormControlInput1" placeholder="Nome">

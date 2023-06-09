@@ -17,7 +17,7 @@ public class ObjetivoDAO {
     }
     
     public int insert (Objetivo objetivo) {
-        String sql = "insert into T_FIN_OBJETIVO (cd_objetivo, ds_objetivo, vl_meta, dt_objetivo, T_FIN_USUARIO_DS_EMAIL)" +
+        String sql = "insert into T_FIN_OBJETIVOS (cd_objetivo, ds_objetivo, vl_meta, dt_objetivo, T_FIN_USUARIO_DS_EMAIL)" +
                 "values (SQ_OBJETIVOS.nextval, ?, ?, ?, ?)";
 
         PreparedStatement stmt = null;
@@ -53,7 +53,7 @@ public class ObjetivoDAO {
     	
     	List<Objetivo> objetivos = new ArrayList<Objetivo>();
     	
-    	 String sql = "select * from T_FIN_OBJETIVO order by CD_OBJETIVO";
+    	 String sql = "select * from T_FIN_OBJETIVOS order by CD_OBJETIVO";
          try {
              Statement stmt = connection.createStatement();
 
@@ -82,7 +82,7 @@ public class ObjetivoDAO {
     public Objetivo selectById(int codigo) {
     	
     	Objetivo objetivo = null;
-        String sql = "select * from T_FIN_OBJETIVO where cd_objetivo=?";
+        String sql = "select * from T_FIN_OBJETIVOS where cd_objetivo=?";
 
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
@@ -110,7 +110,7 @@ public class ObjetivoDAO {
     	
     
     public void delete(int codigo) throws SQLException {
-        String sql = "delete from T_FIN_OBJETIVO where cd_objetivo=?";
+        String sql = "delete from T_FIN_OBJETIVOS where cd_objetivo=?";
         PreparedStatement stmt = connection.prepareStatement(sql);
         stmt.setInt(1, codigo);
         stmt.execute();
@@ -119,7 +119,7 @@ public class ObjetivoDAO {
     }
     
     public void update(Objetivo objetivo) throws SQLException {
-            String sql = "update T_FIN_OBJETIVO set nm_objetivo=?, vl_meta=?, dt_objetivo=? where cd_objetivo=?";
+            String sql = "update T_FIN_OBJETIVOS set nm_objetivo=?, vl_meta=?, dt_objetivo=? where cd_objetivo=?";
             PreparedStatement stmt = connection.prepareStatement(sql);
 
             stmt.setString(1, objetivo.getDescricao());
