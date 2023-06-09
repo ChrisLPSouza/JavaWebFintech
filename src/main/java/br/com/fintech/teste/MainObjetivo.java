@@ -1,6 +1,7 @@
 package br.com.fintech.teste;
 
 import br.com.fintech.dao.ObjetivoDAO;
+import br.com.fintech.filter.LoginFilter;
 import br.com.fintech.model.Objetivo;
 
 import java.sql.Date;
@@ -76,7 +77,7 @@ public class MainObjetivo {
     private static void testaGetAllObjetivo() {
 
         ObjetivoDAO dao = new ObjetivoDAO();
-        List<Objetivo> objetivos = dao.getAll();
+        List<Objetivo> objetivos = dao.getAllById(LoginFilter.usuario.getEmail());
 
         for (Objetivo objetivo: objetivos){
             System.out.println("Objetivo: " + objetivo.toString());

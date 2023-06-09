@@ -1,6 +1,7 @@
 package br.com.fintech.teste;
 
 import br.com.fintech.dao.ReceitaDAO;
+import br.com.fintech.filter.LoginFilter;
 import br.com.fintech.model.Receita;
 
 import java.sql.SQLException;
@@ -9,8 +10,8 @@ import java.util.List;
 public class MainReceitas {
 
     public static void main(String[] args) {
-        testaInsertReceita();
-       // testaGetAllReceitas();
+        //testaInsertReceita();
+        testaGetAllReceitas();
         //testaReceitaById();
       // testaUpdateReceita();
        //testaDeleteReceita();
@@ -38,7 +39,7 @@ public class MainReceitas {
     private static void testaGetAllReceitas() {
 
         ReceitaDAO dao = new ReceitaDAO();
-        List<Receita> receitas = dao.getAll();
+        List<Receita> receitas = dao.getAllById(LoginFilter.usuario.getEmail());
 
         for (Receita receita : receitas) {
             System.out.println("Receita: " + receita.toString());

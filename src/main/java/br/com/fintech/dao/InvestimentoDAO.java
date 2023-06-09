@@ -46,10 +46,10 @@ public class InvestimentoDAO {
             }
         }
     }
-    public List<Investimento> getAll() {
+    public List<Investimento> getAllById(String email) {
 
         List<Investimento> investimentos = new ArrayList<Investimento>();
-        String sql = "select * from T_FIN_INVESTIMENTO order by CD_INVESTIMENTO ASC";
+        String sql = "select * from T_FIN_INVESTIMENTO where T_FIN_USUARIO_DS_EMAIL='"+ email + "'";
         try {
             Statement stmt = connection.createStatement();
 

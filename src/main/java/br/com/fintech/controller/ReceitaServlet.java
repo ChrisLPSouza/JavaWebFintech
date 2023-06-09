@@ -25,7 +25,7 @@ public class ReceitaServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ReceitaDAO dao = new ReceitaDAO();
-        List<Receita> lista = dao.getAll();
+        List<Receita> lista = dao.getAllById(LoginFilter.usuario.getEmail());
 
         request.setAttribute("listaReceitas", lista);
         request.getRequestDispatcher("receita.jsp").forward(request, response);
@@ -47,7 +47,7 @@ public class ReceitaServlet extends HttpServlet {
         int row = dao.insert(receita);
         if (row > 0) {
             request.setAttribute("msg", "Receita cadastrada!");
-           List<Receita> lista = dao.getAll();
+           List<Receita> lista = dao.getAllById(LoginFilter.usuario.getEmail());
            request.setAttribute("listaReceitas", lista);
         } else {
             request.setAttribute("err", "Erro ao cadastrar receita!");

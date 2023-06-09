@@ -43,9 +43,9 @@ public class DespesaDAO {
 
     }
 
-    public List<Despesa> getAll() {
+    public List<Despesa> getAllById(String email) {
         List<Despesa> despesas = new ArrayList<Despesa>();
-        String sql = "select * from T_FIN_DESPESAS";
+        String sql = "select * from T_FIN_DESPESAS where T_FIN_USUARIO_DS_EMAIL = '"+ email + "'";
         try {
             Statement stmt = connection.createStatement();
 

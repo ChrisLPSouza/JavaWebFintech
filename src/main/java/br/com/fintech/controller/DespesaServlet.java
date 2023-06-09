@@ -25,7 +25,7 @@ public class DespesaServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         DespesaDAO dao = new DespesaDAO();
-        List<Despesa> lista = dao.getAll();
+        List<Despesa> lista = dao.getAllById(LoginFilter.usuario.getEmail());
 
         request.setAttribute("listaDespesas", lista);
         request.getRequestDispatcher("despesa.jsp").forward(request, response);
@@ -47,7 +47,7 @@ public class DespesaServlet extends HttpServlet {
         int row = dao.insert(despesa);
         if (row > 0) {
             request.setAttribute("msg", "Despesa cadastrada!");
-           List<Despesa> lista = dao.getAll();
+           List<Despesa> lista = dao.getAllById(LoginFilter.usuario.getEmail());
            request.setAttribute("listaDespesas", lista);
         } else {
             request.setAttribute("err", "Erro ao cadastrar despesa!");

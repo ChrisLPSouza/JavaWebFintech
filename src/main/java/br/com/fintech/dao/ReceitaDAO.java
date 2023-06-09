@@ -47,9 +47,9 @@ public class ReceitaDAO {
         }
     }
 
-    public List<Receita> getAll() {
+    public List<Receita> getAllById(String email) {
         List<Receita> receitas = new ArrayList<Receita>();
-        String sql = "select * from T_FIN_RECEITAS";
+        String sql = "select * from T_FIN_RECEITAS where T_FIN_USUARIO_DS_EMAIL='"+ email + "'";
         try {
             Statement stmt = connection.createStatement();
 
@@ -61,7 +61,7 @@ public class ReceitaDAO {
                 receita.setDescricao(rs.getString("ds_recebimento"));
                 receita.setRecorrencia(rs.getString("st_recorrencia"));
                 receita.setValor(rs.getFloat("vl_recebimento"));
-                receita.setEmail(rs.getString("ds_email"));
+                receita.setEmail(rs.getString("t_fin_usuario_ds_email"));
 
                 receitas.add(receita);
             }

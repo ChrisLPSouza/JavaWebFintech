@@ -1,5 +1,6 @@
 package br.com.fintech.dao;
 
+import br.com.fintech.filter.LoginFilter;
 import br.com.fintech.model.Objetivo;
 import br.com.fintech.connection.ConnectionFactory;
 import java.sql.*;
@@ -49,12 +50,13 @@ public class ObjetivoDAO {
         }
     }
     
-    public List<Objetivo> getAll(){
+    public List<Objetivo> getAllById(String email){
     	
     	List<Objetivo> objetivos = new ArrayList<Objetivo>();
     	
-    	 String sql = "select * from T_FIN_OBJETIVOS order by CD_OBJETIVO";
+    	 String sql = "select * from T_FIN_OBJETIVOS where T_FIN_USUARIO_DS_EMAIL='"+ email + "' order by CD_OBJETIVO";
          try {
+
              Statement stmt = connection.createStatement();
 
              ResultSet rs = stmt.executeQuery(sql);
@@ -65,6 +67,7 @@ public class ObjetivoDAO {
                  objetivo.setDescricao(rs.getString("nm_objetivo"));
                  objetivo.setValor(rs.getDouble("vl_meta"));
                  objetivo.setData(rs.getDate("dt_objetivo"));
+                 objetivo.setEmail(rs.getString("t_fin_usuario_ds_email"));
 
                  objetivos.add(objetivo);
              }

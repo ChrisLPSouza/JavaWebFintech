@@ -1,6 +1,7 @@
 package br.com.fintech.teste;
 
 import br.com.fintech.dao.DespesaDAO;
+import br.com.fintech.filter.LoginFilter;
 import br.com.fintech.model.Despesa;
 
 import java.util.List;
@@ -32,7 +33,7 @@ public class MainDespesas {
     private static void testaGetAllDespesas() {
 
         DespesaDAO dao = new DespesaDAO();
-        List<Despesa> despesas = dao.getAll();
+        List<Despesa> despesas = dao.getAllById(LoginFilter.usuario.getEmail());
 
         for (Despesa despesa : despesas) {
             System.out.println("Despesa: " + despesa.toString());

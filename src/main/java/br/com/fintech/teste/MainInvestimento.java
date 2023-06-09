@@ -36,7 +36,7 @@ public class MainInvestimento {
        private static void testaGetAll() {
 
         InvestimentoDAO dao = new InvestimentoDAO();
-        List<Investimento> investimentos = dao.getAll();
+        List<Investimento> investimentos = dao.getAllById(LoginFilter.usuario.getEmail());
 
         for (Investimento investimento: investimentos){
             System.out.println("Investimento: " + investimento.toString());
