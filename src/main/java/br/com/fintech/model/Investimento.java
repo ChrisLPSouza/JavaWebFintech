@@ -9,7 +9,7 @@ public class Investimento {
     private int cdInvestimento;
     private String nome;
     private float vlInvestimento;
-    private Date dtInicial;
+    private String dtInicial;
     private Date dtResgate;
     private String email;
 
@@ -42,12 +42,12 @@ public class Investimento {
         this.vlInvestimento = vlInvestimento;
     }
 
-    public Date getDtInicial() {
+    public String getDtInicial() {
         return dtInicial;
     }
 
-    public void setDtInicial(Date dtInicial) {
-        this.dtInicial = dtInicial;
+    public void setDtInicial(String dataInicial) {
+        this.dtInicial = dataInicial;
     }
 
     public Date getDtResgate() {
@@ -77,4 +77,7 @@ public class Investimento {
                 ", email='" + email + '\'' +
                 '}';
     }
-}
+
+
+	}
+

@@ -25,7 +25,7 @@ public class InvestimentoDAO {
 
             stmt.setString(1, investimento.getNome());
             stmt.setFloat(2, investimento.getVlInvestimento());
-            stmt.setDate(3, investimento.getDtInicial());
+            stmt.setString(3, investimento.getDtInicial());
             stmt.setDate(4, investimento.getDtResgate());
             stmt.setString(5, investimento.getEmail());
 
@@ -60,7 +60,7 @@ public class InvestimentoDAO {
                 investimento.setCdInvestimento(rs.getInt("cd_investimento"));
                 investimento.setNome(rs.getString("nm_investimento"));
                 investimento.setVlInvestimento(rs.getFloat("vl_investimento"));
-                investimento.setDtInicial(rs.getDate("dt_inicial"));
+                investimento.setDtInicial(rs.getString("dt_inicial"));
                 investimento.setDtResgate(rs.getDate("dt_resgate"));
                 investimento.setEmail(rs.getString("t_fin_usuario_ds_email"));
 
@@ -90,7 +90,7 @@ public class InvestimentoDAO {
                 investimento.setCdInvestimento(rs.getInt("cd_investimento"));
                 investimento.setNome(rs.getString("nm_investimento"));
                 investimento.setVlInvestimento(rs.getFloat("vl_investimento"));
-                investimento.setDtInicial(rs.getDate("dt_inicial"));
+                investimento.setDtInicial(rs.getString("dt_inicial"));
                 investimento.setDtResgate(rs.getDate("dt_resgate"));
                 investimento.setEmail(rs.getString("t_fin_usuario_ds_email"));
 
@@ -124,7 +124,7 @@ public class InvestimentoDAO {
 
             stmt.setString(1, investimento.getNome());
             stmt.setFloat(2, investimento.getVlInvestimento());
-            stmt.setDate(3, investimento.getDtInicial());
+            stmt.setString(3, investimento.getDtInicial());
             stmt.setDate(4, investimento.getDtResgate());
             stmt.setString(5, investimento.getEmail());
             stmt.setInt(6, investimento.getCdInvestimento());
