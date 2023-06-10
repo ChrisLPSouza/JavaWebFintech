@@ -10,14 +10,12 @@ public class MainBanco {
     public static void main(String[] args) {
         testaInsertBanco();
         testaGetAllBancos();
-        testaBancoById();
-        testaUpdateBanco();
-       testaDeleteBanco();
+        testaDeleteBanco();
     }
     private static void testaInsertBanco() {
 
         Banco banco = new Banco();
-        banco.setNome("Caixa Econônica");
+        banco.setNome("Santander");
 
         BancoDAO dao = new BancoDAO();
         dao.insert(banco);
@@ -34,28 +32,11 @@ public class MainBanco {
         }
     }
 
-    private static void testaBancoById() {
-
-        BancoDAO dao = new BancoDAO();
-        Banco banco = dao.selectById(1);
-
-        System.out.println("Banco: " + banco.toString());
-
-    }
-
-    private static void testaUpdateBanco() {
-
-        Banco banco = new Banco();
-        banco.setNome("Bradesco");
-        banco.setNumero(331);
-
-        BancoDAO dao = new BancoDAO();
-        dao.update(banco);
-    }
 
     private static void testaDeleteBanco() {
 
         BancoDAO dao = new BancoDAO();
-        dao.delete(511);
+        dao.delete(41);
+        dao.delete(42);
     }
 }

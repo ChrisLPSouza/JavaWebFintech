@@ -46,10 +46,10 @@ public class ContaDAO {
 
     }
 
-    public List<Conta> getAll() {
+    public List<Conta> getAllById(String email) {
 
         List<Conta> contas = new ArrayList<Conta>();
-        String sql = "select * from T_FIN_CONTA order by ID_CONTA ASC";
+        String sql = "select * from T_FIN_CONTA where T_FIN_USUARIO_DS_EMAIL = '"+ email + "'";
         try {
             Statement stmt = connection.createStatement();
 

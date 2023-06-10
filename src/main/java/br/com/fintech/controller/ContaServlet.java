@@ -1,7 +1,9 @@
 package br.com.fintech.controller;
 
+import br.com.fintech.dao.BancoDAO;
 import br.com.fintech.dao.ContaDAO;
 import br.com.fintech.filter.LoginFilter;
+import br.com.fintech.model.Banco;
 import br.com.fintech.model.Conta;
 
 import javax.servlet.*;
@@ -25,17 +27,20 @@ public class ContaServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ContaDAO dao = new ContaDAO();
-        List<Conta> lista = dao.getAll();
+        BancoDAO daoBanco = new BancoDAO();
+        List<Conta> lista = dao.getAllById(LoginFilter.usuario.getEmail());
+        List<Banco> bancos = daoBanco.getAll();
 
-        request.setAttribute("listaConta", lista);
+        request.setAttribute("listaContas", lista);
+        request.setAttribute("listaBancos", bancos);
         request.getRequestDispatcher("conta.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       String agencia =  request.getParameter("agencia");
-       String numero = request.getParameter("numero");
-       String nrBanco = request.getParameter("nrBanco");
+       String agencia =  request.getParameter("agency");
+       String numero = request.getParameter("NrConta");
+       String nrBanco = request.getParameter("numBanco");
        int agency = Integer.parseInt(agencia);
        int nrConta = Integer.parseInt(numero);
        int numBanco = Integer.parseInt(nrBanco);
@@ -50,10 +55,14 @@ public class ContaServlet extends HttpServlet {
         ContaDAO dao = new ContaDAO();
 
         int row = dao.insert(conta);
+
         if (row > 0) {
+            BancoDAO daoBanco = new BancoDAO();
             request.setAttribute("msg", "Conta cadastrada!");
-           List<Conta> lista = dao.getAll();
-           request.setAttribute("listaConta", lista);
+           List<Conta> lista = dao.getAllById(LoginFilter.usuario.getEmail());
+           List<Banco> bancos = daoBanco.getAll();
+           request.setAttribute("listaContas", lista);
+           request.setAttribute("listaBancos", bancos);
         } else {
             request.setAttribute("err", "Erro ao cadastrar conta!");
         }

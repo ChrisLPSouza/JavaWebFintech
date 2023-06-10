@@ -57,7 +57,7 @@
     <div class="collapse multi-collapse" id="multiCollapseExample1">
         <div class="card card-body">
             <form class="row g-3 needs-validation was-validated" novalidate=""
-                  action="despesa-servlet" method="post">
+                  action="conta-servlet" method="post">
 
                 <div class="d-grid gap-4 mb-3">
                     <input type="number" name="agency" class="form-control" placeholder="Agencia">
@@ -72,10 +72,18 @@
                     </div>
                 </div>
                 <div class="d-grid gap-4 mb-3">
-                    <input type="number" name="numBanco" class="form-control" placeholder="Numero do Banco">
+
+
+                    <select class="form-select" name="numBanco" aria-label="Default select example">
+                        <option selected>Selecione...</option>
+                        <c:forEach var="banco" items="${ listaBancos }">
+                            <option value="${banco.numero}">${banco.nome}</option>
+                        </c:forEach>
+                    </select>
                     <div class="invalid-feedback">
-                        Numeor do Banco
+                        Selecione o banco
                     </div>
+
                 </div>
 
                 <div class="d-grid gap-4">
@@ -97,13 +105,15 @@
             <th colspan="2" class="table-active">Agencia</th>
             <th colspan="2" class="table-active">Numero da Conta</th>
             <th colspan="2" class="table-active">Numero do Banco</th>
+            <th colspan="2" class="table-active">Usuario</th>
         </tr>
         <c:forEach var="conta" items="${ listaContas }">
             <tr>
-                <td colspan="2" class="table-active">${conta.codigo}</td>
-                <td colspan="2" class="table-active">${conta.agency}</td>
+                <td colspan="2" class="table-active">${conta.idConta}</td>
+                <td colspan="2" class="table-active">${conta.agencia}</td>
                 <td colspan="2" class="table-active">${conta.nrConta}</td>
-                 <td colspan="2" class="table-active">${conta.numBanco}</td>
+                <td colspan="2" class="table-active">${conta.nrBanco}</td>
+                <td colspan="2" class="table-active">${conta.email}</td>
             </tr>
         </c:forEach>
     </table>

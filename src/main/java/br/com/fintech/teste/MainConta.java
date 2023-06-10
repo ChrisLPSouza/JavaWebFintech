@@ -34,19 +34,6 @@ public class MainConta {
 
     }
 
-
-    private static void testaGetAll() {
-
-        ContaDAO dao = new ContaDAO();
-        List<Conta> contas = dao.getAll();
-
-        for (Conta conta: contas){
-            System.out.println("Conta: " + conta.toString());
-        }
-
-
-    }
-
     private static void testaContaById() {
 
         ContaDAO dao = new ContaDAO();
