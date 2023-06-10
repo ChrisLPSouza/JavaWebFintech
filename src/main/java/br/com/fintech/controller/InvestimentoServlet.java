@@ -56,7 +56,7 @@ public class InvestimentoServlet extends HttpServlet {
         if (row > 0) {
             request.setAttribute("msg", "Investimento cadastrada!");
            List<Investimento> lista = dao.getAllById(LoginFilter.usuario.getEmail());
-           request.setAttribute("listaInvestimento", lista);
+           request.setAttribute("listaInvestimentos", lista);
         } else {
             request.setAttribute("err", "Erro ao cadastrar investimento!");
         }

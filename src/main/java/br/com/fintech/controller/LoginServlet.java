@@ -49,7 +49,7 @@ public class LoginServlet extends HttpServlet {
                         if (session !=null) {
 
                             // Cria um banco aleatorio, sempre após o login
-                            int idBanco = new Random(9999).nextInt();
+                            int idBanco = new Random().nextInt(9999);
                             Banco banco = new Banco();
                             banco.setNome("Banco " + idBanco);
                             BancoDAO bancoDAO = new BancoDAO();

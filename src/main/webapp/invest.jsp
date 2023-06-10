@@ -101,8 +101,8 @@
             <tr>
                 <td colspan="2" class="table-active">${investimento.cdInvestimento}</td>
                 <td colspan="2" class="table-active">${investimento.nome}</td>
-                <td colspan="2" class="table-active">${investimento.valor}</td>
-                 <th colspan="2" class="table-active">${investimento.dataInicial}</th>
+                <td colspan="2" class="table-active">${investimento.vlInvestimento}</td>
+                 <th colspan="2" class="table-active">${investimento.dtInicial}</th>
             </tr>
         </c:forEach>
     </table>

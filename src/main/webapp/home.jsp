@@ -60,7 +60,6 @@
 		<a class="btn btn-success btn-lg" href="despesa-servlet" role="button">Despesas</a>
 		<a class="btn btn-success btn-lg" href="receita-servlet" role="button">Receitas</a> 
 		<a class="btn btn-success btn-lg" href="investimento-servlet" role="button">Investimentos</a> 
-		<a class="btn btn-success btn-lg" href="objetivo-servlet" role="button">Objetivos</a>
 		<a class="btn btn-success btn-lg" href="conta-servlet" role="button">Conta</a>
 	</div>
 	<script type="text/javascript" src="resources/js/jquery-3.6.0.min.js"></script>
